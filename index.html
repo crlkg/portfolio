@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>웹 퍼블리셔 정다혜 포트폴리오</title>
+  <link rel="stylesheet" href="/assets/style.css">
+  <meta name="description" content="웹퍼블리셔 3년차 포트폴리오" />
+  <meta property="og:title" content="웹퍼블리셔 포트폴리오" />
+  <meta property="og:description" content="HTML5, BEM" />
+  <meta property="og:type" content="website" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" role="banner">
+    <div class="header__bar">
+      <div class="container header__inner">
+        <a href="#" class="brand" aria-label="홈으로">
+          <!-- <span class="brand__logo" aria-hidden="ture"></span> -->
+          <span class="brand__title">Jung Da Hye Portfolio</span>
+        </a>
+        <nav class="nav header_nav">
+          <ul class="nav__list">
+            <li class="nav__item"><a class="nav__link" href="#projects">Projects</a></li>
+            <li class="nav__item"><a class="nav__link" href="#skills">Skills</a></li>
+            <li class="nav__item"><a class="nav__link" href="#about">About</a></li>
+            <li class="nav__item"><a class="nav__link" href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="header__cate">
+          <a class="button" href="https://www.notion.so/16c728a3313880fda481e74ea9b0add6" target="_blank">이력서</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <main id="main" tabindex="-1">
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <h1 class="hero__title">
+            <span class="typewriter" style="--char-count: 18">
+              안녕하세요, 웹퍼블리셔 정다혜입니다.
+            </span>
+          </h1>       
+          <p class="hero__meta">
+            <span class="hero__tag" aria-label="주요 역량">HTML5</span>
+            <span class="hero__tag">CSS3/SCSS</span>
+            <span class="hero__tag">JQuery / Javascript(ES6)</span>
+            <span class="hero__tag">Vue</span>
+          </p>
+          <div class="hero_cta">
+            <a href="https://www.notion.so/Dahye-Jung-16c728a33138800cad14c573ecf4b878?source=copy_link" target="_blank" class="button button--primary">노션 바로가기</a>
+            <a href="https://github.com/crlkg" target="_blank" class="button">GitHub 바로가기</a>
+          </div>
+          <div class="hero__media" role="img" aria-label="대표 썸네일 자리"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section projects" aria-labelledby="projects-heading">
+      <div class="container">
+        <div class="section__head">
+          <h2 id="projects-heading" class="section__title">작업물</h2>
+        </div>
+        <div class="projects__grid">
+          <!-- Card -->
+          <article class="card card-featured" aria-labelledby="p1-title">
+            <a href="https://www.ebse.co.kr/apps/main/main.do" target="_blank">
+              <div class="card__media ebse" aria-hidden="true"></div>
+              <div class="card__body">
+                <h3 id="p1-title" class="card__title">EBS english 사이트 고도화</h3>
+                <p class="card__meta">역할: 퍼블리셔 / 기간 : 2023.06 ~ </p>
+                <div class="card__tags">
+                  <span class="tag">반응형</span>
+                  <span class="tag">웹표준/웹접근성</span>
+                  <span class="tag">고도화</span>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <article class="card card-featured" aria-labelledby="p2-title">
+            <a href="https://www.togetherschool.go.kr/" target="_blank">
+              <div class="card__media together" aria-hidden="true"></div>
+              <div class="card__body">
+                <h3 id="p2-title" class="card__title">함께학교 사이트 구축</h3>
+                <p class="card__meta">역할: 퍼블리셔 / 기간 : 2023-09 ~ 2023-11 / 기여도 100%</p>
+                <div class="card__tags">
+                  <span class="tag">반응형</span>
+                  <span class="tag">웹표준/웹접근성</span>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <article class="card card-featured" aria-labelledby="p3-title">
+            <a href="https://www.maeili.com/main.do" target="_blank">
+              <div class="card__media etc" aria-hidden="true"></div>
+              <div class="card__body">
+                <h3 id="p3-title" class="card__title">기업 사이트 운영 (다수)</h3>
+                <p class="card__meta">매일유업(매일아이, 우유안부) / 에쓰오일 보너스카드 / LG 생활건강, 한독 등</p>
+                <div class="card__tags">
+                  <span class="tag">운영</span>
+                  <span class="tag">접근성 개선</span>
+                  <span class="tag">성능 최적화</span>
+                </div>
+              </div>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section skills" aria-labelledby="skills-heading">
+      <div class="container">
+        <div class="section__head">
+          <h2 id="skills-heading" class="section__title">스킬</h2>
+        </div>
+        <div class="skills__list" role="list">
+          <div class="skills__item skills__item--strong" role="listitem">HTML5 (시멘틱 마크업)</div>
+          <div class="skills__item" role="listitem">CSS3 / SCSS/ BEM</div>
+          <div class="skills__item" role="listitem">JQuery / Javascript (ES6)</div>
+          <div class="skills__item" role="listitem">웹표준 / 웹접근성</div>
+          <div class="skills__item" role="listitem">반응형 / 적응형</div>
+          <div class="skills__item" role="listitem">크로스브라우징</div>
+          <div class="skills__item" role="listitem">성능 / 레이아웃 최적화</div>
+          <div class="skills__item" role="listitem">협업 : Git, Figma, Photoshop, Bitbucket</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section about" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="section__head">
+          <h2 id="about-heading" class="section__title">소개</h2>
+        </div>
+        <div class="about__panel">
+          <div class="about__box">
+            <h3 class="aboyt__subtitle">경력 요약</h3>
+            <p class="about__text">웹퍼블리셔 3년차. 운영과 구축을 병행하며 웹표준과 웹접근성을 준수한 마크업을 지향합니다.</p>
+          </div>
+          <div class="about__box">
+            <h3 class="about__subtitle">작업 원칙</h3>
+            <ul class="about__list">
+              <li>시멘틱 구조 우선</li>
+              <li>의미 있는 BEM 네이밍 준수</li>
+              <li>컴포넌트화로 재사용/유지보수 향상</li>
+            </ul>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section contact" aria-labelledby="contact__heading">
+      <div class="container">
+        <div class="section__head">
+          <h2 id="contact-heading" class="section__title">연락</h2>
+        </div>
+        <form class="form" action="#" method="post">
+          <div class="form__row">
+            <label for="name" class="form__label">이름</label>
+            <input id="name" class="form__input" type="text" required />
+          </div>
+          <div class="form__row">
+            <label for="email" class="form__label">이메일</label>
+            <input id="email" class="form__input" type="email"  inputmod="email" required />
+          </div>
+          <div class="form__row">
+            <label for="msg" class="form__label">메세지</label>
+            <textarea id="msg" class="form__textarea" name="message" required></textarea>
+          </div>
+          <button class="button button--primary" type="submit">보내기</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    var tl = gsap.timeline(), 
+
+split = new SplitText("#hero-heading", {type:"words,chars"}), 
+
+words = split.words; //an array of all the divs that wrap each character
+
+tl.to(words, {
+  duration: 7,
+  "--weight": "300",
+  ease: "power3.out",
+  color: "hsl(+=0, +=70%, +=20%)",
+  stagger: {
+    each: 0.1,
+  }
+})
+
+  </script>
+</body>
+</html>
