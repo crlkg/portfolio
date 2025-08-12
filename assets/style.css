@@ -257,9 +257,18 @@ button {
   .hero__inner {
     grid-template-columns: 1fr;
   }
+}
 
+@media screen and (max-width: 74rem) {
   .mo_only {
     display: block;
+  }
+
+  .typewriter {
+    white-space: normal;
+    border-right: none; /* 커서 제거 */
+    animation: none !important; /* 타이핑/깜빡임 모두 중단 */
+    width: auto; /* width 기반 타이핑 폭 초기화 */
   }
 }
 
