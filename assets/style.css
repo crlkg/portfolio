@@ -245,9 +245,17 @@ button {
   border-radius: var(--radius);
 }
 
+.mo_only {
+  display: none;
+}
+
 @media (max-width: 90rem) {
   .hero__inner {
     grid-template-columns: 1fr;
+  }
+  
+  .mo_only {
+    display: block;
   }
 }
 
