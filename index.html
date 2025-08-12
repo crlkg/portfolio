@@ -156,29 +156,71 @@
       </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="section contact" aria-labelledby="contact__heading">
-      <div class="container">
-        <div class="section__head">
-          <h2 id="contact-heading" class="section__title">연락</h2>
+  <!-- contact -->
+  <section id="contact" class="section contact" aria-labelledby="contact-heading">
+    <div class="container">
+      <div class="section__head">
+        <h2 id="contact-heading" class="section__title">연락</h2>
+      </div>
+
+      <form id="contact-form" class="form" action="https://formspree.io/f/mblkwovd" method="POST">
+        <div class="form__row">
+          <label class="form__label" for="name">이름</label>
+          <input class="form__input" id="name" name="name" type="text" required />
         </div>
-        <form class="form" action="#" method="post">
-          <div class="form__row">
-            <label for="name" class="form__label">이름</label>
-            <input id="name" class="form__input" type="text" required />
+        <div class="form__row">
+          <label class="form__label" for="email">이메일</label>
+          <input class="form__input" id="email" name="email" type="email" inputmode="email" required />
+        </div>
+        <div class="form__row">
+          <label class="form__label" for="msg">메시지</label>
+          <textarea class="form__textarea" id="msg" name="message" required></textarea>
+        </div>
+
+        <!-- 스팸 방지용 허니팟 -->
+        <div class="sr-only" aria-hidden="true">
+          <label>Leave this empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <!-- 성공/실패 메시지 -->
+        <p id="form-status" aria-live="polite" class="section__desc" style="min-height:1.6rem"></p>
+          <div>
+            <button class="button button--primary" type="submit">보내기</button>
           </div>
-          <div class="form__row">
-            <label for="email" class="form__label">이메일</label>
-            <input id="email" class="form__input" type="email"  inputmod="email" required />
-          </div>
-          <div class="form__row">
-            <label for="msg" class="form__label">메세지</label>
-            <textarea id="msg" class="form__textarea" name="message" required></textarea>
-          </div>
-          <button class="button button--primary" type="submit">보내기</button>
         </form>
       </div>
     </section>
   </main>
+  <script>
+    (function () {
+      const form = document.getElementById('contact-form');
+      const status = document.getElementById('form-status');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        status.textContent = '전송 중...';
+        const btn = form.querySelector('button[type="submit"]');
+        btn.disabled = true;
+
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: new FormData(form)
+          });
+          if (res.ok) {
+            form.reset();
+            status.textContent = '보내졌습니다! 빠르게 답변드릴게요 🙌';
+          } else {
+            status.textContent = '전송에 실패했어요. 잠시 후 다시 시도해주세요.';
+          }
+        } catch (err) {
+          status.textContent = '네트워크 오류가 발생했어요. 인터넷 연결 확인 후 다시 시도해주세요.';
+        } finally {
+          btn.disabled = false;
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
