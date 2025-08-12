@@ -70,8 +70,9 @@ button {
 
 /* Header */
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  width: 100%;
   backdrop-filter: blur(0.8rem);
   background: color-mix(in oklab, var(--bg) 80%, transparent);
   z-index: 50;
@@ -312,15 +313,15 @@ button {
 }
 
 .card__media.ebse {
-  background-image: url('../assets/images/projects_ebse.png');
+  background-image: url('../assets/images/projects_ebse.svg');
 }
 
 .card__media.together {
-  background-image: url('../assets/images/projects_togetherSchool.png');
+  background-image: url('../assets/images/projects_togetherSchool.svg');
 }
 
 .card__media.etc {
-  background-image: url('../assets/images/projects_etc.png');
+  background-image: url('../assets/images/projects_etc.svg');
 }
 
 .card__body {
