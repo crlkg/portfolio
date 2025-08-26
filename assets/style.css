@@ -202,15 +202,15 @@ button {
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
-  border-right: 0.2rem solid var(--text);
-  width: 0;
+  /* border-right: 0.2rem solid var(--text); */
+  /* width: 0; */
   font-size: clamp(2.8rem, 4vw, 4.4rem);
   max-width: 100%;
   box-sizing: border-box;
-  animation: typing 3s steps(22, end) forwards, blink-caret 0.75s step-end infinite;
+  /* animation: typing 3s steps(22, end) forwards, blink-caret 0.75s step-end infinite; */
 }
 
-@keyframes typing {
+/* @keyframes typing {
   from { width: 0; }
   to { width: 23ch; }
 }
@@ -218,7 +218,7 @@ button {
 @keyframes blink-caret {
   0%, 100% { border-color: transparent; }
   50% { border-color: var(--text); }
-}
+} */
 
 .hero__subtitle {
   color: var(--muted);
@@ -264,12 +264,12 @@ button {
     display: block;
   }
 
-  .typewriter {
+  /* .typewriter {
     white-space: normal;
-    border-right: none; /* 커서 제거 */
-    animation: none !important; /* 타이핑/깜빡임 모두 중단 */
-    width: auto; /* width 기반 타이핑 폭 초기화 */
-  }
+    border-right: none;
+    animation: none !important;
+    width: auto;
+  } */
 }
 
 /* Section base */
