@@ -31,6 +31,7 @@ body {
   line-height: normal;
   background: var(--bg);
   color: var(--text);
+  font-size: 1.6rem;
 }
 
 a {
@@ -236,7 +237,7 @@ button {
   border: 0.1rem solid var(--line);
   padding: 0.6rem 1rem;
   border-radius: 100px;
-  font-size: 0.9rem;
+  font-size: 1.4rem;
   background: var(--panel);
 }
 
@@ -356,7 +357,7 @@ button {
 
 .card__meta {
   margin: 0 0 1rem;
-  font-size: 0.9rem;
+  font-size: 1.6rem;
   color: var(--muted);
 }
 
@@ -367,7 +368,7 @@ button {
 }
 
 .tag {
-  font-size: 0.85rem;
+  font-size: 1.4rem;
   border: 0.1rem solid var(--line);
   padding: 0.4rem 0.8rem;
   border-radius: 100px;
