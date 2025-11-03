@@ -69,7 +69,7 @@ button {
   max-width: var(--max);
   width: 100%;
   margin-inline: auto;
-  padding-inline: 1.6rem; /* 좌우 여백은 패딩으로 확보 → 가운데 정렬 안정화 */
+  padding-inline: 1.6rem;
   box-sizing: border-box;
 }
 
@@ -199,6 +199,7 @@ button {
   line-height: 1.2;
   margin: 0 0 1.2rem;
 }
+
 .typewriter {
   display: inline-block;
   overflow: hidden;
