@@ -1,0 +1,46 @@
+.contact {
+  min-height: 60vh;
+  background: #0f1115;
+  color: #fff;
+
+
+  &__content {
+    margin-top: 60px;
+    max-width: 600px;
+  }
+
+  &__text {
+    font-size: 18px;
+    color: #bbb;
+    margin-bottom: 40px;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+
+    li {
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    span {
+      font-size: 14px;
+      color: #888;
+      letter-spacing: 1px;
+    }
+
+    a {
+      font-size: 18px;
+      color: #4f8cff;
+      text-decoration: none;
+      transition: 0.2s;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+}

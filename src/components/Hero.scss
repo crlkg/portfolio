@@ -1,0 +1,39 @@
+.hero {
+  height: 100vh;
+  background: #0f1115;
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 20px;
+
+  &__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &__intro {
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 20px;
+  }
+
+  &__title {
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 20px;
+
+    span {
+      color: #4f8cff;
+    }
+  }
+
+  &__desc {
+    font-size: 18px;
+    color: #aaa;
+  }
+}

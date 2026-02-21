@@ -1,0 +1,46 @@
+.projects {
+  background: #0f1115;
+  color: #fff;
+
+  &__list {
+    margin-top: 60px;
+  }
+
+  &__item {
+    padding: 40px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  &__name {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  &__desc {
+    font-size: 16px;
+    color: #aaa;
+    margin-bottom: 20px;
+  }
+
+  &__stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    span {
+      font-size: 13px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      background: rgba(79, 140, 255, 0.15);
+      color: #4f8cff;
+    }
+  }
+
+  .projects__period {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+}
