@@ -1,13 +1,817 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>portfolio</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>정다혜 | Web Publisher Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black: #111111;
+  --gray-800: #333333;
+  --gray-600: #666666;
+  --gray-400: #999999;
+  --gray-200: #DDDDDD;
+  --gray-100: #F5F5F5;
+  --white: #FFFFFF;
+  --accent: #2563EB;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: var(--white);
+  color: var(--black);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* ── Layout ── */
+.wrap {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ── Aside ── */
+aside {
+  width: 260px;
+  min-height: 100vh;
+  position: fixed;
+  top: 0; left: 0;
+  background: var(--black);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  padding: 52px 32px;
+  z-index: 10;
+}
+
+.profile-name {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+
+.profile-role {
+  font-size: 12px;
+  color: var(--gray-400);
+  letter-spacing: 1px;
+  margin-bottom: 36px;
+}
+
+.aside-divider {
+  height: 1px;
+  background: #2a2a2a;
+  margin-bottom: 28px;
+}
+
+.contact-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.contact-list li a,
+.contact-list li span {
+  font-size: 12px;
+  color: #aaaaaa;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color .2s;
+}
+
+.contact-list li a:hover { color: var(--white); }
+
+.contact-list svg { opacity: .5; flex-shrink: 0; }
+
+/* Side Nav */
+.side-nav {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.side-nav a {
+  display: block;
+  font-size: 13px;
+  color: #888888;
+  text-decoration: none;
+  padding: 7px 10px;
+  border-radius: 4px;
+  transition: color .2s, background .2s;
+  letter-spacing: .3px;
+}
+
+.side-nav a:hover,
+.side-nav a.active {
+  color: var(--white);
+  background: #222222;
+}
+
+.aside-bottom {
+  margin-top: auto;
+  font-size: 12px;
+  color: #444444;
+}
+
+/* ── Main ── */
+main {
+  margin-left: 260px;
+  flex: 1;
+  padding: 80px 72px;
+  max-width: 900px;
+}
+
+/* ── Section ── */
+.section {
+  margin-bottom: 80px;
+}
+
+.section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.section-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--gray-200);
+}
+
+/* ── Intro ── */
+#intro .headline {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -1.5px;
+  margin-bottom: 20px;
+  color: var(--black);
+}
+
+#intro .headline span { color: var(--accent); }
+
+#intro .desc {
+  font-size: 15px;
+  color: var(--gray-600);
+  line-height: 1.9;
+  max-width: 560px;
+  font-weight: 300;
+}
+
+.stats-row {
+  display: flex;
+  gap: 48px;
+  margin-top: 40px;
+  padding-top: 36px;
+  border-top: 1px solid var(--gray-200);
+}
+
+.stat-item { display: flex; flex-direction: column; gap: 2px; }
+
+.stat-number {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--black);
+  letter-spacing: -1px;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--gray-400);
+  letter-spacing: 1px;
+}
+
+/* ── Skills ── */
+.skill-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.skill-group:last-child { border-bottom: none; }
+
+.skill-cat {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gray-400);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  min-width: 80px;
+  padding-top: 4px;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-tag {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--gray-800);
+  background: var(--gray-100);
+  padding: 5px 14px;
+  border-radius: 3px;
+  transition: background .2s, color .2s;
+}
+
+.skill-tag:hover {
+  background: var(--black);
+  color: var(--white);
+}
+
+/* ── Experience ── */
+.exp-item {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 32px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.exp-item:last-child { border-bottom: none; }
+
+.exp-left {}
+
+.exp-period {
+  font-size: 12px;
+  color: var(--gray-600);
+  line-height: 1.5;
+}
+
+
+.exp-right {}
+
+.exp-company {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 2px;
+  letter-spacing: -.3px;
+}
+
+.exp-role {
+  font-size: 12px;
+  color: var(--gray-400);
+  margin-bottom: 12px;
+  letter-spacing: .3px;
+}
+
+.exp-works {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 14px;
+}
+
+.exp-works li {
+  font-size: 13px;
+  color: var(--gray-600);
+  padding-left: 14px;
+  position: relative;
+  font-weight: 300;
+}
+
+.exp-works li::before {
+  content: '·';
+  position: absolute;
+  left: 4px;
+  color: var(--gray-400);
+}
+
+.badge-row { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.badge {
+  font-size: 12px;
+  color: var(--accent);
+  background: #EFF6FF;
+  padding: 3px 10px;
+  border-radius: 3px;
+  letter-spacing: .3px;
+}
+
+/* ── Projects ── */
+.project-item {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 32px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.project-item:last-child { border-bottom: none; }
+
+.proj-company {
+  font-size: 12px;
+  color: var(--gray-400);
+  line-height: 1.6;
+}
+
+.proj-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 6px;
+  letter-spacing: -.3px;
+}
+
+.proj-type {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.proj-desc {
+  font-size: 13px;
+  color: var(--gray-600);
+  font-weight: 300;
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+.tech-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.tech-tag {
+  font-size: 12px;
+  color: var(--gray-600);
+  border: 1px solid var(--gray-200);
+  padding: 2px 9px;
+  border-radius: 3px;
+}
+
+/* ── Education ── */
+.edu-item {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 32px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.edu-item:last-child { border-bottom: none; }
+
+.edu-period {
+  font-size: 12px;
+  color: var(--gray-600);
+  line-height: 1.5;
+}
+
+.edu-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 2px;
+}
+
+.edu-major {
+  font-size: 13px;
+  color: var(--gray-600);
+  font-weight: 300;
+  margin-bottom: 6px;
+}
+
+.edu-status {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: .5px;
+}
+
+.edu-gpa {
+  font-size: 12px;
+  color: var(--gray-400);
+  margin-top: 4px;
+}
+
+/* ── Cert ── */
+.cert-item {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 32px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--gray-100);
+  align-items: center;
+}
+
+.cert-item:last-child { border-bottom: none; }
+
+.cert-year { font-size: 12px; color: var(--gray-600); }
+
+.cert-name { font-size: 15px; font-weight: 700; color: var(--black); margin-bottom: 2px; }
+
+.cert-org { font-size: 12px; color: var(--gray-400); }
+
+/* ── Scroll reveal ── */
+.fade {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .55s ease, transform .55s ease;
+}
+.fade.in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fade { opacity: 1; transform: none; transition: none; }
+}
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+  aside { display: none; }
+  main { margin-left: 0; padding: 48px 24px; }
+  .exp-item, .project-item, .edu-item, .cert-item { grid-template-columns: 1fr; gap: 8px; }
+  .stats-row { gap: 28px; flex-wrap: wrap; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ── Aside ── -->
+<aside>
+  <div class="profile-name">정다혜</div>
+  <div class="profile-role">WEB PUBLISHER</div>
+
+  <div class="aside-divider"></div>
+
+  <ul class="contact-list">
+    <li>
+      <a href="tel:010-7194-8157">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        010-7194-8157
+      </a>
+    </li>
+    <li>
+      <a href="mailto:crlkg.j@gmail.com">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        crlkg.j@gmail.com
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/crlkg" target="_blank">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        github.com/crlkg
+      </a>
+    </li>
+  </ul>
+
+  <ul class="side-nav">
+    <li><a href="#intro" class="active">Intro</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+  </ul>
+
+  <div class="aside-bottom">© 2026 Jung Dahye</div>
+</aside>
+
+<!-- ── Main ── -->
+<main>
+
+  <!-- Intro -->
+  <section id="intro" class="section">
+    <div class="headline fade">
+      실무에 바로 투입 가능한<br><span>4년차 웹퍼블리셔</span>입니다.
+    </div>
+    <p class="desc fade">
+      웹 퍼블리셔로서 4년간 다양한 산업군의 프로젝트를 경험하며 운영과 구축 전반을 모두 수행해왔습니다.
+      단순 마크업을 넘어 구조를 설계하고, 협업 환경에서 효율적으로 작동하는 UI를 구현하는 데 집중해왔습니다.
+      React 기반 시스템 구축 경험을 통해 컴포넌트 중심 사고를 익혔으며, 빠른 적응력과 책임감을 바탕으로 기여하고자 합니다.
+    </p>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="section">
+    <div class="section-label fade">Skills</div>
+
+    <div class="skill-group fade">
+      <span class="skill-cat">Markup</span>
+      <div class="skill-tags">
+        <span class="skill-tag">HTML5</span>
+        <span class="skill-tag">CSS3</span>
+        <span class="skill-tag">SCSS</span>
+        <span class="skill-tag">SASS</span>
+      </div>
+    </div>
+
+    <div class="skill-group fade">
+      <span class="skill-cat">Script</span>
+      <div class="skill-tags">
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">TypeScript</span>
+        <span class="skill-tag">jQuery</span>
+        <span class="skill-tag">React</span>
+      </div>
+    </div>
+
+    <div class="skill-group fade">
+      <span class="skill-cat">Version</span>
+      <div class="skill-tags">
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">GitHub</span>
+        <span class="skill-tag">GitLab</span>
+      </div>
+    </div>
+
+    <div class="skill-group fade">
+      <span class="skill-cat">Design</span>
+      <div class="skill-tags">
+        <span class="skill-tag">Figma</span>
+        <span class="skill-tag">Photoshop</span>
+        <span class="skill-tag">Illustrator</span>
+      </div>
+    </div>
+
+    <div class="skill-group fade">
+      <span class="skill-cat">Etc.</span>
+      <div class="skill-tags">
+        <span class="skill-tag">반응형 웹</span>
+        <span class="skill-tag">웹 표준</span>
+        <span class="skill-tag">웹 접근성</span>
+        <span class="skill-tag">크로스브라우징</span>
+        <span class="skill-tag">GUI 개발</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" class="section">
+    <div class="section-label fade">Experience</div>
+
+    <div class="exp-item fade">
+      <div class="exp-left">
+        <div class="exp-period">2025. 09 – 2026. 02</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-company">주식회사 에이치나인</div>
+        <div class="exp-role">서비스개발1팀 · 주임</div>
+        <ul class="exp-works">
+          <li>현대 오토에버 GSPS · SHE Portal 웹사이트 신규 구축</li>
+          <li>국립중앙박물관 모두 웹접근성 유지보수</li>
+        </ul>
+        <div class="badge-row">
+          <span class="badge">반응형웹</span>
+          <span class="badge">웹표준·웹접근성</span>
+          <span class="badge">GUI</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item fade">
+      <div class="exp-left">
+        <div class="exp-period">2025. 01 – 2025. 09</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-company">주식회사 상록에스</div>
+        <div class="exp-role">퍼블리싱 · 주임</div>
+        <ul class="exp-works">
+          <li>EBSenglish 사이트 유지보수 및 운영</li>
+        </ul>
+        <div class="badge-row">
+          <span class="badge">반응형웹</span>
+          <span class="badge">웹표준·웹접근성</span>
+          <span class="badge">GUI</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item fade">
+      <div class="exp-left">
+        <div class="exp-period">2023. 06 – 2025. 01</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-company">주식회사 유토퍼스</div>
+        <div class="exp-role">퍼블리싱 · 주임</div>
+        <ul class="exp-works">
+          <li>EBSenglish 사이트 유지보수 및 운영</li>
+          <li>함께학교 웹사이트 신규 구축</li>
+        </ul>
+        <div class="badge-row">
+          <span class="badge">반응형웹</span>
+          <span class="badge">웹표준·웹접근성</span>
+          <span class="badge">GUI</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item fade">
+      <div class="exp-left">
+        <div class="exp-period">2022. 03 – 2023. 06</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-company">(주) 이퓨전아이</div>
+        <div class="exp-role">UI 개발 사원</div>
+        <ul class="exp-works">
+          <li>매일유업 (매일아이 · 매일 다이렉트 · 우유안부) 웹사이트 유지보수 및 운영</li>
+          <li>LG 생활건강 (오휘 · 빌리프 · CNP-rx · 보닌) 웹사이트 유지보수 및 운영</li>
+          <li>에쓰오일 보너스 카드 웹사이트 유지보수 및 운영</li>
+        </ul>
+        <div class="badge-row">
+          <span class="badge">반응형웹</span>
+          <span class="badge">웹표준·웹접근성</span>
+          <span class="badge">GUI</span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="section">
+    <div class="section-label fade">Projects</div>
+
+    <div class="project-item fade">
+      <div class="proj-company">에이치나인<br>2025 – 2026</div>
+      <div>
+        <div class="proj-type">구축</div>
+        <div class="proj-name">현대 오토에버 GSPS · SHE Portal</div>
+        <div class="proj-desc">현대 오토에버의 사내 포털 시스템(GSPS)과 안전보건 포털(SHE Portal) 신규 웹사이트 구축. 반응형 레이아웃 및 웹 접근성 기준 전면 적용.</div>
+        <div class="tech-tags">
+          <span class="tech-tag">HTML5</span><span class="tech-tag">CSS3</span><span class="tech-tag">JavaScript</span><span class="tech-tag">반응형</span><span class="tech-tag">웹접근성</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-item fade">
+      <div class="proj-company">에이치나인<br>2025 – 2026</div>
+      <div>
+        <div class="proj-type">유지보수</div>
+        <div class="proj-name">국립중앙박물관 모두 웹접근성 유지보수</div>
+        <div class="proj-desc">국립중앙박물관 통합 웹사이트의 웹 접근성 기준 진단 및 개선 유지보수 수행.</div>
+        <div class="tech-tags">
+          <span class="tech-tag">HTML5</span><span class="tech-tag">CSS3</span><span class="tech-tag">웹접근성</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-item fade">
+      <div class="proj-company">상록에스 / 유토퍼스<br>2023 – 2025</div>
+      <div>
+        <div class="proj-type">운영</div>
+        <div class="proj-name">EBSenglish 사이트 운영</div>
+        <div class="proj-desc">EBSenglish 웹사이트 지속 운영 및 유지보수. 두 회사 재직 기간 동안 연속 담당하며 안정적인 서비스 유지 기여.</div>
+        <div class="tech-tags">
+          <span class="tech-tag">HTML5</span><span class="tech-tag">CSS3</span><span class="tech-tag">jQuery</span><span class="tech-tag">SCSS</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-item fade">
+      <div class="proj-company">유토퍼스<br>2023 – 2025</div>
+      <div>
+        <div class="proj-type">구축</div>
+        <div class="proj-name">함께학교 웹사이트 구축</div>
+        <div class="proj-desc">함께학교 신규 웹사이트 퍼블리싱 전담. 반응형 및 웹 표준 준수 마크업 작업.</div>
+        <div class="tech-tags">
+          <span class="tech-tag">HTML5</span><span class="tech-tag">SCSS</span><span class="tech-tag">JavaScript</span><span class="tech-tag">반응형</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-item fade">
+      <div class="proj-company">이퓨전아이<br>2022 – 2023</div>
+      <div>
+        <div class="proj-type">운영</div>
+        <div class="proj-name">매일유업 브랜드 웹사이트 운영</div>
+        <div class="proj-desc">매일아이, 매일 다이렉트, 우유안부 등 매일유업 산하 브랜드 웹사이트 유지보수 및 운영.</div>
+        <div class="tech-tags">
+          <span class="tech-tag">HTML5</span><span class="tech-tag">CSS3</span><span class="tech-tag">jQuery</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-item fade">
+      <div class="proj-company">이퓨전아이<br>2022 – 2023</div>
+      <div>
+        <div class="proj-type">운영</div>
+        <div class="proj-name">LG생활건강 · 에쓰오일 웹사이트 운영</div>
+        <div class="proj-desc">오휘, 빌리프, CNP-rx, 보닌 등 LG생활건강 뷰티 브랜드 및 에쓰오일 보너스 카드 웹사이트 유지보수 및 운영.</div>
+        <div class="tech-tags">
+          <span class="tech-tag">HTML5</span><span class="tech-tag">CSS3</span><span class="tech-tag">JavaScript</span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="section">
+    <div class="section-label fade">Education</div>
+
+    <div class="edu-item fade">
+      <div class="edu-period">2025. 03 – 2027. 02</div>
+      <div>
+        <div class="edu-name">한양사이버대학교</div>
+        <div class="edu-major">컴퓨터공학과 (편입)</div>
+        <span class="edu-status">재학 중</span>
+        <div class="edu-gpa">학점 3.36 / 4.5</div>
+      </div>
+    </div>
+
+    <div class="edu-item fade">
+      <div class="edu-period">2015. 03 – 2018. 02</div>
+      <div>
+        <div class="edu-name">연성대학교</div>
+        <div class="edu-major">정보통신</div>
+        <span class="edu-status">졸업</span>
+        <div class="edu-gpa">학점 3.6 / 4.5</div>
+      </div>
+    </div>
+
+    <div class="edu-item fade">
+      <div class="edu-period">2021. 10 – 2022. 03</div>
+      <div>
+        <div class="edu-name">그린아카데미</div>
+        <div class="edu-major">웹디자인 &amp; 웹퍼블리셔 양성과정</div>
+        <span class="edu-status">수료</span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Certifications -->
+  <section id="certifications" class="section">
+    <div class="section-label fade">Certifications</div>
+
+    <div class="cert-item fade">
+      <div class="cert-year">2022. 03</div>
+      <div>
+        <div class="cert-name">GTQ 1급</div>
+        <div class="cert-org">한국생산성본부</div>
+      </div>
+    </div>
+
+    <div class="cert-item fade">
+      <div class="cert-year">2021. 06</div>
+      <div>
+        <div class="cert-name">新 HSK 6급</div>
+        <div class="cert-org">한국HSK실시위원회</div>
+      </div>
+    </div>
+
+    <div class="cert-item fade">
+      <div class="cert-year">2016. 11</div>
+      <div>
+        <div class="cert-name">MOS Master</div>
+        <div class="cert-org">Microsoft</div>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+</div>
+
+<script>
+  const fades = document.querySelectorAll('.fade');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  fades.forEach(el => io.observe(el));
+
+  // Active nav
+  const secs = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.side-nav a');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    secs.forEach(s => { if (window.scrollY >= s.offsetTop - 180) cur = s.id; });
+    links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + cur));
+  });
+</script>
+</body>
 </html>
